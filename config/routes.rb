@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
   resources :tasks
   resources :task_schedules do
     member do
@@ -9,4 +11,5 @@ Rails.application.routes.draw do
   resources :users
 
   root to: 'users#index'
+
 end

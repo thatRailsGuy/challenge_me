@@ -1,4 +1,18 @@
+# Instructions based on changes by CCecil:
+
+Copy config file:
+```bash
+$ cp config/application.yml.sample config/application.yml
+```
+
+To start sidekiq,
+```bash
+$ sidekiq
+```
+
+
 # README
+To start processing taskSchedules, run `TaskScheduleCleanupJob.perform_later` from the console. Currently it is set to add itself to the queue every 5 minutes.
 
 This is a simple Rails app designed to challenge you and demonstrate your Rails skills.
 The challenges here can take as much or as little time as you put into them.  They are designed

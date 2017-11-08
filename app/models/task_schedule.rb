@@ -10,9 +10,10 @@ class TaskSchedule < ApplicationRecord
     end
 
     def self.process_expired
-        self.where(due_date < Datetime.now).for_each do |task_schedule|
+        self.where(['due_date < ?', DateTime.now]).find_each do |task_schedule|
             task_schedule.mark_incomplete
         end
+        TaskScheduleCleanupJob.set(wait: Figaro.env.task_schedule_cleanup_job_wait_time.to_i).perform_later
     end
 
     private
