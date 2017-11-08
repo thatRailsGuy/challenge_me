@@ -10,43 +10,13 @@
   <%= @user.email %>
 </p>
 
-<p>
-  <strong>Task Schedules</strong>
-  <table>
-      <thead>
-        <th>
-          Name
-        </th>
-        <th>
-          Due Date
-        </th>
-      </thead>
-      <tbody>
-          <%= render @user.task_schedules %>
-      </tbody>
-  </table>
-</p>
+<div id="task_schedules">
+  <%= render 'task_schedules/task_schedules', user: @user %>
+</div>
 
-<p>
-  <strong>Tasks</strong>
-  <table>
-      <thead>
-        <th>
-          Name
-        </th>
-        <th>
-          Complete
-        </th>
-        <th>
-          Due Date
-        </th>
-      </thead>
-      <tbody>
-          <%= render @user.tasks %>
-      </tbody>
-  </table>
-</p>
-
+<div id="tasks">
+  <%= render 'tasks/tasks', user: @user %>
+</div>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
