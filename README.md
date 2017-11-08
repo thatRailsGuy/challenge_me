@@ -1,18 +1,29 @@
 # Instructions based on changes by CCecil:
+Challenge 1:
 
-Copy config file:
+Changes in user#show view
+
+Challenge 2:
+
+* Copy config file:
 ```bash
 $ cp config/application.yml.sample config/application.yml
 ```
-
-To start sidekiq,
+* To start sidekiq,
 ```bash
 $ sidekiq
 ```
+* To start processing taskSchedules, run `TaskScheduleCleanupJob.perform_later` from the console. Currently it is set to add itself to the queue every 5 minutes.
 
+With the rails app running, you can see the current status of the queue and how many times it has processed by viewing `/sidekiq`
+
+Challenge 3:
+
+(Question is a little strange since the user isn't actually logged in, I interpreted it as when viewing user#show it should be in the user's timezone.)
+
+Changes can be seen in user#show view
 
 # README
-To start processing taskSchedules, run `TaskScheduleCleanupJob.perform_later` from the console. Currently it is set to add itself to the queue every 5 minutes.
 
 This is a simple Rails app designed to challenge you and demonstrate your Rails skills.
 The challenges here can take as much or as little time as you put into them.  They are designed

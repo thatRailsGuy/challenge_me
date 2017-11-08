@@ -10,6 +10,11 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>Time Zone:</strong>
+  <%= @user.time_zone %>
+</p>
+
 <div id="task_schedules">
   <%= render 'task_schedules/task_schedules', user: @user %>
 </div>
