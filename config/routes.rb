@@ -8,7 +8,11 @@ Rails.application.routes.draw do
         patch 'complete'
     end
   end
-  resources :users
+  resources :users do
+    member do
+        get 'today'
+    end
+  end
 
   root to: 'users#index'
 

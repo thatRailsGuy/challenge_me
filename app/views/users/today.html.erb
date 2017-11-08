@@ -2,6 +2,7 @@
 
 <%= render 'users/user', user: @user, tasks: @tasks, task_schedules: @task_schedules %>
 
+
+<%= link_to 'Show', @user %> |
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %> |
-<%= link_to 'Today', today_user_path(@user) %>
+<%= link_to 'Back', users_path %>

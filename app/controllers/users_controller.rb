@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :today]
 
   # GET /users
   # GET /users.json
@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @tasks = @user.tasks
+    @task_schedules = @user.task_schedules
   end
 
   # GET /users/new
@@ -59,6 +61,14 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # get /users/1/today
+  def today
+    beginning_of_day = Time.now.in_time_zone(@user.time_zone).beginning_of_day
+    end_of_day = Time.now.in_time_zone(@user.time_zone).end_of_day
+    @task_schedules = @user.task_schedules.where("due_date > ? and due_date < ?", beginning_of_day, end_of_day)
+    @tasks = @user.tasks.where("due_date > ? and due_date < ?", beginning_of_day, end_of_day)
   end
 
   private

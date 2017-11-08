@@ -10,7 +10,7 @@
 20.times do
   user = User.create(name: Faker::Name.name, email: Faker::Internet.email)
   10.times do
-    due_date = (rand(9)+1).days.from_now
+    due_date = (rand(9)-4).days.from_now
     TaskSchedule.create(name: Faker::Lorem.sentence, due_date: due_date, user: user)
   end
 end
