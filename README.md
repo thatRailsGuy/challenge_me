@@ -21,7 +21,9 @@ Challenge 3:
 
 (Question is a little strange since the user isn't actually logged in, I interpreted it as when viewing user#show it should be in the user's timezone.)
 
-Changes can be seen in user#show view
+I spent more time than expected trying to figure out why some of my test data's dates were off by an hour, only to realize after a while I was looking at dates before the time change and the code was correct.
+
+Changes can be seen in user#show and user#today views
 
 # README
 
